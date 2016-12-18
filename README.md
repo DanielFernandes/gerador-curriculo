@@ -12,10 +12,6 @@ About your application's environment
 
 * JavaScript Runtime        Node.js (V8)
 
-<<<<<<< 48351484299ee8abc723e57b968262e293e8e717
 * Install Gem Prawn
-=======
-*  Install Gem Prawn
->>>>>>> Deploy Heroku
 
-* Install Gem Cocoon 
+* Install Gem Cocoon
