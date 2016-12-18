@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employer: MyString
+  office: MyString
+  start_year_job: 1
+  exit_year_job: 1
+  user: one
+
+two:
+  employer: MyString
+  office: MyString
+  start_year_job: 1
+  exit_year_job: 1
+  user: two

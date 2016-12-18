@@ -1,0 +1,14 @@
+
+<div class="nested-fields">
+
+        <div class="col-md-12 input-group">
+            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+            <%= f.text_field :phone_user, class:"form-control",  placeholder:"(845)555-121" %>
+            <div class="input-group-btn">
+              <%= link_to_remove_association  f, :class => 'btn btn-warning' do %>
+                   <i class="fa fa-times  "></i>
+              <% end %>
+            </div>
+        </div>
+
+</div>

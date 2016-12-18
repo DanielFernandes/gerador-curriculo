@@ -1,0 +1,47 @@
+<div class="nested-fields">
+      <div class="form-group">
+        <%= f.label :empresa, class:"col-md-4 control-label" %>
+         <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-gears"></i></span>
+              <%= f.text_field :employer, class:"form-control", placeholder:"Nome da Empresa" %>
+          </div>
+        </div>
+      </div><br/><br/>
+      <!-- Text input-->
+      <div class="form-group">
+        <%= f.label :cargo, class:"col-md-4 control-label" %>
+         <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-money"></i></span>
+              <%= f.text_field :office, class:"form-control", placeholder:"Cargo exercido" %>
+          </div>
+        </div>
+      </div><br/><br/>
+      <!-- Text input-->
+      <div class="form-group">
+        <%= f.label :ano_de_entrada, class:"col-md-4 control-label" %>
+         <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              <%= f.text_field :start_year_job, class:"form-control", placeholder:"2015" %>
+          </div>
+        </div>
+      </div><br/>
+      <!-- Text input-->
+      <div class="form-group">
+        <%= f.label :ano_de_saída,class:"col-md-4 control-label" %>
+         <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              <%= f.text_field :exit_year_job, class:"form-control", placeholder:"2016" %>
+          </div>
+        </div>
+      </div>
+      <div class="input-group-btn">
+        <%= link_to_remove_association f, :class => "btn btn-warning"  do %>
+            <i class="fa fa-times"></i>
+        <% end %>
+      </div>
+
+</div>

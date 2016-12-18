@@ -1,0 +1,287 @@
+<%= render partial: "homes/shared/navigation" %><br><br><br><br>
+
+  <%= form_for @user, class:"well form-horizontal", id:"contact_form" do |f|%>
+      <fieldset>
+        <!-- Form Name -->
+        <legend>Dados Pessoais</legend>
+        <!-- Text input-->
+        <%= f.fields_for :personal_data do |pd| %>
+
+            <div class="form-group">
+                <%= f.label :nome, class:"col-md-4 control-label"%>
+              <div class="col-md-4 inputGroupContainer">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <%= pd.text_field :name,class:"form-control",placeholder:"Digite seu nome" %>
+                </div>
+              </div>
+            </div><br>
+            <!-- Text input-->
+            <div class="form-group">
+                <%= f.label :idade, class:"col-md-4 control-label"%>
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
+                <%= pd.text_field :age,class:"form-control",placeholder:"Digite sua imagem" %>
+                </div>
+              </div>
+            </div><br>
+            <!-- Text input-->
+            <div class="form-group">
+                <%= f.label :cnh, class:"col-md-4 control-label"%>
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-car"></i></span>
+                <%= pd.text_field :cnh,class:"form-control",placeholder:"ABCDE" %>
+                </div>
+              </div>
+            </div><br>
+            <!-- Text input-->
+            <div class="form-group">
+                <%= f.label :email, class:"col-md-4 control-label"%>
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <%= pd.text_field :email, class:"form-control", placeholder:"Digite seu email" %>
+                </div>
+              </div>
+            </div><br/>
+
+        <% end %>
+        <!-- Text input-->
+        <%= f.fields_for :phones do |phones_fields| %>
+            <div class="form-group">
+                  <%= f.label :telefone, class:"col-md-4 control-label"%>
+                <div class="col-md-4 inputGroupContainer">
+                <div class="input-group">
+                        <%= render partial: "phone_fields", locals: { f: phones_fields } %>
+                      <div class="field">
+                        <%= link_to_add_association('[Adicionar Telefone]', f, :phones) %>
+                      </div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+
+
+        <!-- Form Name -->
+        <legend>Idiomas</legend>
+        <!-- Text input-->
+
+        <%= f.fields_for :idioms do |idioms_fields| %>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Idioma</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                  <%= render partial: "idiom_fields", locals: { f: idioms_fields } %>
+                  <div class="field">
+                    <%= link_to_add_association('[Adicionar Idioma]', f, :idioms) %>
+                  </div>
+              </div>
+            </div>
+          </div><br/>
+        <% end %>
+
+        <br/>
+        <legend>Formação Academica</legend>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Instituição</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-tower"></i></span>
+          <input name="address" placeholder="Nome da Instituição" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/>
+
+        <!-- Select Basic -->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Titulação</label>
+            <div class="col-md-4 selectContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+            <select name="state" class="form-control selectpicker" >
+              <option value=" " >Selecione</option>
+              <option>Fundamental</option>
+              <option>Médio</option>
+              <option>Superior</option>
+              <option>Pós-Graduação</option>
+              <option >Mestrado</option>
+              <option >Doutorado</option>
+            </select>
+          </div>
+        </div>
+        </div><br/><br/>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Curso</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
+          <input name="city" placeholder="Nome do Curso" class="form-control"  type="text">
+            </div>
+          </div>
+        </div><br/><br/>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Ano de Início</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <input name="zip" placeholder="2010" class="form-control"  type="text">
+            </div>
+        </div>
+        </div><br/><br/>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Ano de Término</label>
+           <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          <input name="website" placeholder="2015" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/>
+
+        <legend>Experiência Profissional(*)</legend>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Empresa</label>
+           <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-gears"></i></span>
+          <input name="website" placeholder="Nome da Empresa" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Cargo</label>
+           <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-money"></i></span>
+          <input name="website" placeholder="Cargo exercido" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Ano de entrada</label>
+           <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          <input name="website" placeholder="2015" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Ano de saída</label>
+           <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          <input name="website" placeholder="2015" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/><br/><br/>
+
+        <legend>Formação Complementar(*)</legend>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Instituição</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-institution"></i></span>
+          <input name="address" placeholder="Nome da Instituição" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/><br/>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Curso</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa  fa-gamepad"></i></span>
+          <input name="address" placeholder="Nome do Curso" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Carga Horária</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-hourglass"></i></span>
+          <input name="address" placeholder="150hrs" class="form-control" type="text">
+            </div>
+          </div>
+        </div><br/><br/>
+
+
+        <legend>Sobre você</legend>
+        <!-- Text area -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Resumo</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                	<textarea class="form-control" name="comment" placeholder="Descreva um pouco da sua experiência, área de atuação, habilidades, etc..."></textarea>
+          </div>
+          </div>
+        </div><br/><br/><br/><br/>
+        <!-- Text area -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Objetivos</label>
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+                	<textarea class="form-control" name="comment" placeholder="Descreva seus objetivos para o emprego que deseja."></textarea>
+          </div>
+          </div>
+        </div><br/><br/><br/>
+
+
+
+        <!-- radio checks -->
+         <div class="form-group">
+                                <label class="col-md-4 control-label">Salvar Alterações</label>
+                                <div class="col-md-4">
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="hosting" value="yes" /> Sim
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="hosting" value="no" /> Não
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><br/>
+
+        <!-- Success message -->
+        <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+        <br/><br/><br/><br/><br/><br/>
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4">
+
+            <%= f.submit 'Save',class:"submit" %>
+
+            <button type="submit" class="btn btn-primary" >Gerar PDF <span class="fa fa-file-pdf-o"></span></button>
+              <button type="reset" class="btn btn-success" >Novo Curriculo <span class="fa fa-rocket"></span></button>
+          </div>
+        </div>
+
+      </fieldset>
+
+  <% end %>
+ </div>
+
+<%= render partial: "homes/shared/footer" %>
