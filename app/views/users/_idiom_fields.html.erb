@@ -1,11 +1,12 @@
 <div class="nested-fields">
 
-    <div class="col-md-12 input-group">
-        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-        <%= f.text_field :language_idiom, class:"form-control", placeholder:"Inglês, Português, outra..." %>
+    <div class="input-field col s6">
+        <i class="material-icons prefix">language</i>
+        <%= f.text_field :language_idiom,id:"idiom", class:"validate", placeholder:"Inglês, Português, outra..." %>
+        <%= f.label :idioma, for:"idiom"%>
         <div class="input-group-btn">
-          <%= link_to_remove_association f, :class => "btn btn-warning"  do %>
-              <i class="fa fa-times"></i>
+          <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
+          <i class="material-icons">delete</i>
           <% end %>
         </div>
     </div>

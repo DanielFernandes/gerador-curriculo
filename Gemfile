@@ -1,18 +1,17 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ # ruby '2.3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 
-gem 'twitter-bootstrap-rails'
+gem 'materialize-sass'
+gem 'material_icons'
 gem 'prawn-rails'
-# gem 'rails-assets-bootstrap', '3.3.7', source: 'https://rails-assets.org'
-gem "font-awesome-rails"
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 # gem 'bootstrap_sb_admin_base_v2'
 # Dynamic nested forms using jQuery made easy;
 # works with formtastic, simple_form or default forms http://github.com/nathanvda/cocoon
-gem "cocoon"
+gem 'cocoon'
 gem 'simple_form'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

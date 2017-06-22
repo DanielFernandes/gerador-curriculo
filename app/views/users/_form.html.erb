@@ -1,237 +1,222 @@
-<%= form_for @user,  class:"well form-horizontal", id:"contact_form", :html=> {target:"_blank"} do |f|%>
+<div class="row">
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <%= form_for @user,  html: {class:"center-align col s12",id:"contact_form", target:"_blank"} do |f|%>
 
-<fieldset>
-<!-- Form Dados Pessoais -->
-<legend>Dados Pessoais</legend>
-      <!-- Text input-->
-      <%= f.fields_for :personal_data do |pd| %>
-            <div class="form-group">
-                <%= f.label :nome, class:"col-md-4 control-label"%>
-              <div class="col-md-4 inputGroupContainer">
-              <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <%= pd.text_field :name,class:"form-control",placeholder:"Digite seu nome" %>
-                </div>
-              </div>
-            </div><br>
-            <!-- Text input-->
-            <div class="form-group">
-                <%= f.label :idade, class:"col-md-4 control-label"%>
-                <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-sort-numeric-asc"></i></span>
-                <%= pd.text_field :age,class:"form-control",placeholder:"Digite sua imagem" %>
-                </div>
-              </div>
-            </div><br>
-            <!-- Text input-->
-            <div class="form-group">
-                <%= f.label :cnh, class:"col-md-4 control-label"%>
-                <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-car"></i></span>
-                <%= pd.text_field :cnh,class:"form-control",placeholder:"ABCDE" %>
-                </div>
-              </div>
-            </div><br>
-            <!-- Text input-->
-            <div class="form-group">
-                <%= f.label :email, class:"col-md-4 control-label"%>
-                  <div class="col-md-4 inputGroupContainer">
-                  <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                      <%= pd.text_field :email, class:"form-control", placeholder:"Digite seu email" %>
-                  </div>
-                </div>
-            </div><br/>
-
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
       <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="row">
+    <h4 class="center-align">Dados Pessoais</h4>
+  </div>
         <!-- Text input-->
-        <%= f.fields_for :phones do |phones_fields| %>
-            <div class="form-group">
-                  <%= f.label :telefone, class:"col-md-4 control-label"%>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="col-md-12 input-group">
-                            <%= render partial: "phone_fields", locals: { f: phones_fields } %>
-                          <div class="field">
-                            <%= link_to_add_association  f, :phones, :class => 'btn btn-success' do %>
-                                Adicionar Telefone <i class="fa fa-gear"></i>
-                            <% end %>
-                          </div>
-                    </div>
+        <%= f.fields_for :personal_data do |pd| %>
+
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">account_circle</i>
+                    <%= pd.text_field :name,class:"validate", id:"first_name", type:"text" %>
+                      <%= f.label :nome, for:"first_name" %>
                 </div>
-            </div>
+                <div class="input-field col s4">
+                  <i class="material-icons prefix">format_list_numbered</i>
+                  <%= pd.text_field :age, class:"validate",id:"age", type:"text" %>
+                  <%= f.label :idade ,for:"age"%>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">drive_eta</i>
+                  <%= pd.text_field :cnh, class:"validate",id:"cnh",type:"text",placeholder:"ABCDE" %>
+                  <%= f.label :cnh, for:"cnh"%>
+                </div>
+                <div class="input-field col s4">
+                  <i class="material-icons prefix">email</i>
+                  <%= pd.text_field :email, class:"validate", id:"email", type:"email" %>
+                  <%= f.label :email, for:"email"%>
+                </div>
+              </div>
         <% end %>
 
-<!-- Form Dados Idiomas -->
-<legend>Idiomas</legend>
-        <%= f.fields_for :idioms do |idioms_fields| %>
-        <!-- Text input-->
-            <div class="form-group">
-              <%= f.label :idioma, class:"col-md-4 control-label"%>
-              <div class="col-md-4 inputGroupContainer">
-                  <div class="input-group">
-                        <%= render partial: "idiom_fields", locals: { f: idioms_fields } %>
+          <!-- Text input-->
+          <%= f.fields_for :phones do |phones_fields| %>
+
+              <div class="row">
+                  <div class="input-field col s12">
+                          <%= render partial: "phone_fields", locals: { f: phones_fields } %>
                         <div class="field">
-                          <%= link_to_add_association f, :idioms, :class => "btn btn-default" do  %>
-                            Adicionar Idioma <i class="fa fa-flask"></i>
+                          <%= link_to_add_association  f, :phones, class: 'btn-floating btn-medium' do %>
+                             <i class="material-icons right">add</i>
                           <% end %>
                         </div>
-                    </div>
-                </div>
-            </div><br/>
-        <% end %>
-<br/>
-<!-- Form Formação Academica -->
-<legend>Formação Academica</legend>
-      <%= f.fields_for :instituitions do |instituition| %>
-      <!-- Select Basic -->
-      <div class="form-group">
-      <%= f.label :titulação, class:"col-md-4 control-label"%>
-          <div class="col-md-4 selectContainer">
-          <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-list"></i></span>
-              <%= instituition.select :graduation, %w[Fundamental Médio Superior Pós-Graduação Mestrado Doutorado],
-                                                      {include_blank: 'Selecione'},{class:"form-control"} %>
+
+                  </div>
+              </div>
+
+          <% end %>
+</div>
+
+  <!-- Form Dados Idiomas -->
+  <div class="row">
+    <div class="row">
+      <h4 class="center-align">Idiomas</h4>
+    </div>
+    <div class="row">
+      <%= f.fields_for :idioms do |idioms_fields| %>
+        <!-- Text input-->
+          <%= render partial: "idiom_fields", locals: { f: idioms_fields } %>
+          <div class="field">
+            <%= link_to_add_association f, :idioms, :class => "btn-floating btn-medium" do  %>
+            <i class="material-icons right">add</i>
+            <% end %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Form Formação Academica -->
+  <div class="row">
+    <div class="row">
+      <h4 class="center-align">Formação Academica</h4>
+    </div>
+        <%= f.fields_for :instituitions do |instituition| %>
+        <!-- Select Basic -->
+        <div class="row">
+            <div class="input-field col s3">
+              <i class="material-icons prefix"></i>
+                <%= instituition.select :graduation, %w[Fundamental Médio Superior Pós-Graduação Mestrado Doutorado],
+                                                        {include_blank: 'Selecione'},{id:"titule"} %>
+                <%= f.label :titulação, for:"titule"%>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">school</i>
+          <%= instituition.text_field :name_instituition,id:"insti", class:"validate"%>
+            <%= f.label :instituição, for:"insti"%>
         </div>
       </div>
-    </div><br/><br>
-        <!-- Text input-->
-        <div class="form-group">
-          <%= f.label :instituição, class:"col-md-4 control-label"%>
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-institution"></i></span>
-          <%= instituition.text_field :name_instituition, class:"form-control", placeholder:"Nome da Instituição" %>
-            </div>
+
+      <!-- Text input-->
+      <div class="row">
+          <div class="input-field col s4">
+              <i class="material-icons prefix">book</i>
+              <%= instituition.text_field :course,id:"cours", class:"validate",type:"text" %>
+              <%= f.label :curso, for:"cours" %>
           </div>
-        </div><br/><br/>
-        <!-- Text input-->
-        <div class="form-group">
-          <%= f.label :curso, class:"col-md-4 control-label" %>
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-graduation-cap  "></i></span>
-                <%= instituition.text_field :course, class:"form-control", placeholder:"Nome do Curso" %>
-            </div>
+
+          <div class="input-field col s3">
+              <i class="material-icons prefix">date_range</i>
+              <%= instituition.text_field :start_year_grad, id:"styd", class:"datepicker", type:"date" %>
+              <%= f.label :ano_de_início, for:"styd" %>
           </div>
-        </div><br/>
-        <!-- Text input-->
-        <div class="form-group">
-          <%= f.label :ano_de_início, class:"col-md-4 control-label" %>
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                <%= instituition.text_field :start_year_grad, class:"form-control", placeholder:"2010" %>
-            </div>
-        </div>
-        </div><br/>
-        <!-- Text input-->
-        <div class="form-group">
-          <%= f.label :ano_de_término, class:"col-md-4 control-label" %>
-           <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                <%= instituition.text_field :exit_year_grad, class:"form-control", placeholder:"2015" %>
-            </div>
+          <div class="input-field col s3">
+              <i class="material-icons prefix">date_range</i>
+              <%= instituition.text_field :exit_year_grad, id:"eyg",class:"datepicker", type:"date" %>
+              <%= f.label :ano_de_término, for:"eyg"%>
           </div>
-        </div><br/>
-     <% end %>
-<!-- Form Experiencia Profissional -->
-<legend>Experiência Profissional</legend>
-     <%= f.fields_for :jobs do |job| %>
-        <%= render partial: "job_fields", locals: { f: job } %>
+      </div>
+       <% end %>
+    </div>
+
+  <!-- Form Experiencia Profissional -->
+  <div class="row">
+    <div class="row">
+      <h4 class="center-align">Experiência Profissional</h4>
+    </div>
+    <div class="row">
+      <%= f.fields_for :jobs do |job| %>
+         <%= render partial: "job_fields", locals: { f: job } %>
+             <div class="field">
+                   <%= link_to_add_association  f, :jobs, :class => 'btn-floating btn-medium' do %>
+                     <i class="material-icons">add</i>
+                   <% end %>
+             </div>
+       <% end %>
+    </div>
+  </div>
+
+  <!-- Form Formação Complementar -->
+<div class="row">
+  <div class="row">
+    <h4 class="center-align">Formação Complementar</h4>
+  </div>
+  <div class="row">
+    <%= f.fields_for :complementary_trainnings do |ct| %>
+        <%= render partial: "complementary_trainning_fields", locals: { f: ct } %>
             <div class="field">
-                  <%= link_to_add_association  f, :jobs, :class => 'btn btn-success' do %>
-                    Add jobs <i class="fa fa-gear"></i>
+                  <%= link_to_add_association  f, :complementary_trainnings, :class => 'btn-floating btn-medium' do %>
+                    <i class="material-icons">add</i>
                   <% end %>
             </div>
-      <% end %>
-<br>
-<!-- Form Formação Complementar -->
-<legend>Formação Complementar</legend>
-      <%= f.fields_for :complementary_trainnings do |ct| %>
-          <%= render partial: "complementary_trainning_fields", locals: { f: ct } %>
-              <div class="field">
-                    <%= link_to_add_association  f, :complementary_trainnings, :class => 'btn btn-success' do %>
-                      Adicionar atividades <i class="fa fa-gear"></i>
-                    <% end %>
-              </div>
-       <% end %>
-<br>
-<!-- Form About -->
-<legend>Sobre você</legend>
-      <%= f.fields_for :about do |ab| %>
-        <!-- Text area -->
-        <div class="form-group">
-          <%= f.label :area_de_interesse, class:"col-md-4 control-label" %>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                    <%= ab.text_area :resume, class:"form-control",size:"10x4",
-                                      placeholder:"Descreva as áreas de interesse. Ex: Infraestrutura, RH, Financeiro, Desenvolvimento, etc... "%>
-                </div>
-          </div>
-        </div><br/><br/><br/><br/><br/><br/>
-        <!-- Text area -->
-        <div class="form-group">
-          <%= f.label :informações_adicionais, class:"col-md-4 control-label" %>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-                    <%= ab.text_area :objective, class:"form-control",size:"10x4",
-                                      placeholder:"Descreva um pouco da sua experiência, áreas de atuação, habilidades, etc..."%>
-                </div>
-          </div>
-        </div><br/><br/><br/><br/><br/><br/>
-      <% end %>
-<!-- radio checks -->
-       <div class="form-group">
-          <label class="col-md-4 control-label">Deseja Salvar as Alterações</label>
-          <div class="col-md-4">
-              <div class="radio">
-                  <label>
-                      <input id='radio1' onclick="f1()" type="radio" name="A" value="yes" /> Sim
-                  </label>
-              </div>
-              <div class="radio">
-                  <label>
-                      <input id='radio2' onclick="f1()"  type="radio" name="A" value="no" /> Não
-                  </label>
-              </div>
-          </div>
-      </div><br/>
+     <% end %>
+  </div>
+</div>
 
-<!-- Success message -->
-      <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
-      <br/><br/><br/><br/><br/><br/>
 
-<!-- Button -->
-      <div class="form-group">
-        <label class="col-md-4 control-label"></label>
-        <div class="col-md-6">
-            <%= button_tag :disabled => true, type:"submit", class:"btn btn-primary", id:"pdf" do %>
-                Gerar PDF <i class="fa fa-file-pdf-o"></i>
-            <% end %>
-            <%= link_to  users_path, class:"btn btn-success",:target =>"_blank" do %>
-                Novo Curriculo <i class="fa fa-gears"></i>
-            <% end %>
-            <%= button_tag(type: "reset", class: "btn btn-danger") do %>
-                Limpar Campos <i class="fa fa-rocket"></i>
-            <% end %>
+  <!-- Form About -->
+
+  <div class="row">
+  <div class="row">
+      <h4 class="center-align">Sobre Você</h4>
+  </div>
+  <%= f.fields_for :about do |ab| %>
+    <!-- Text area -->
+    <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">info</i>
+          <%= ab.text_area :resume, id:"area", class:"materialize-textarea",'data-length':"220",
+                            placeholder:"Descreva as áreas de interesse. Ex: Infraestrutura, RH, Financeiro, Desenvolvimento, etc... "%>
+          <%= f.label :area_de_interesse, for:"area" %>
         </div>
-      </div>
+        <div class="input-field col s6 ">
+          <i class="material-icons prefix">edit</i>
+          <%= ab.text_area :objective, id:"info", class:"materialize-textarea",'data-length':"220",
+                            placeholder:"Descreva um pouco da sua experiência, áreas de atuação, habilidades, etc..."%>
+          <%= f.label :informações_adicionais,for:"info"%>
+        </div>
+    </div>
+  <% end %>
+  </div>
+  <!-- radio checks -->
+    <div class="row">
+      <div class="col s12 center-align">
+        <div class="row">
+          <p>Deseja Salvar as Alterações</p>
+        </div>
+        <div class="row">
+            <div class="col s6">
+              <p>
+                <input id='radio1' onclick="f1()" type="radio" name="A" value="yes" />
+                <label for="radio1">Sim</label>
+              </p>
+              <p>
+                <input id='radio2' onclick="f1()"  type="radio" name="A" value="no" />
+                <label for="radio2">Não</label>
+              </p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Button -->
+        <div class="row">
+          <div class="center-align col s12">
+              <%= button_tag :disabled => true, type:"submit", class:"btn waves-effect waves-light", id:"pdf" do %>
+                  Gerar PDF <i class="material-icons right">picture_as_pdf</i>
+              <% end %>
+              <%= link_to  users_path, class:"btn waves-effect waves-light green",:target =>"_blank" do %>
+                  Novo Curriculo <i class="material-icons right">fiber_new</i>
+              <% end %>
+              <%= button_tag(type: "reset", class: "btn waves-effect waves-light orange") do %>
+                  Limpar Campos <i class="material-icons right">delete</i>
+              <% end %>
+          </div>
+        </div>
+  <% end %>
+  </div>
 
-</fieldset>
-<% end %>
 </div>

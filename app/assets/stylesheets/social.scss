@@ -4,9 +4,10 @@
      -o-transform: scale(1.1);
  }
  .social {
+   cursor: pointer;
      -webkit-transform: scale(0.8);
      /* Browser Variations: */
-     color: #868181;
+     color: #eceff1;
      -moz-transform: scale(0.8);
      -o-transform: scale(0.8);
      -webkit-transition-duration: 0.5s;

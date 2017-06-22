@@ -1,3 +1,20 @@
-<%= render partial: "users/shared/navigation" %><br><br><br><br>
-<%= render partial: "form" %>
-<%= render partial: "users/shared/footer" %>
+  <header>
+  <div class="parallax-container">
+    <div class="parallax"><%= image_tag 'header.jpg', class: "responsive-img" %></div>
+   <!-- .parallax-container -->
+
+      <div class="header-content">
+        <div class="row">
+          <div class="center-align", style="margin-top: 150px;">
+              <h2>Gerador de Curriculos</h2>
+              <p>Seu curriculo bonito e bem apresentavel</p>
+
+          </div>
+        </div>
+
+      </div>
+  </div>
+  </header>
+  <section class="container">
+    <%= render partial: "form" %>
+  </section>

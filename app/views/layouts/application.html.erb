@@ -5,12 +5,21 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'users', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="container">
-    <%= yield %>
+  <body>
+    <header>
+      <%= render partial: "layouts/shared/navigation" %>
+    </header>
+
+    <main>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <%= render partial: "layouts/shared/footer" %>
+    </footer>
   </body>
 </html>

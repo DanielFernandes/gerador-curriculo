@@ -1,14 +1,12 @@
-
 <div class="nested-fields">
 
-        <div class="col-md-12 input-group">
-            <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-            <%= f.text_field :phone_user, class:"form-control",  placeholder:"(845)555-121" %>
-            <div class="input-group-btn">
-              <%= link_to_remove_association  f, :class => 'btn btn-warning' do %>
-                   <i class="fa fa-times  "></i>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+            <%= f.text_field :phone_user, class:"validate",id:"phone",  placeholder:"(845)555-121" %>
+            <%= f.label :telefone, for:"phone"%>
+              <%= link_to_remove_association  f, class: 'btn-floating btn-medium red' do %>
+                   <i class="material-icons ">delete</i>
               <% end %>
-            </div>
         </div>
 
 </div>

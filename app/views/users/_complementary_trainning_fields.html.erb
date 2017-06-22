@@ -1,38 +1,28 @@
 <div class="nested-fields">
   <!-- Text input-->
-  <div class="form-group">
-    <%= f.label :instituição, class:"col-md-4 control-label" %>
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-institution"></i></span>
-          <%= f.text_field :name_instituition_comp, class:"form-control", placeholder:"Nome da Instituição" %>
+  <div class="row">
+
+      <div class="input-field col s4">
+          <i class="material-icons prefix">account_balance</i>
+          <%= f.text_field :name_instituition_comp,id:"name_inst", class:"validate",type:"text" %>
+          <%= f.label :instituição, for:"name_inst" %>
       </div>
-    </div>
-  </div><br/><br/>
-  <!-- Text input-->
-  <div class="form-group">
-    <%= f.label :curso, class:"col-md-4 control-label" %>
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-          <span class="input-group-addon"><i class="fa  fa-gamepad"></i></span>
-          <%= f.text_field :course_comp, class:"form-control", placeholder:"Nome do Curso" %>
+      <div class="input-field col s4">
+          <i class="material-icons prefix"></i>
+          <%= f.text_field :course_comp, id:"cours_co", class:"validate", type:"text" %>
+          <%= f.label :curso, for:"cours_co"%>
       </div>
-    </div>
-  </div><br/><br/>
-  <!-- Text input-->
-  <div class="form-group">
-    <%= f.label :carga_horária, class:"col-md-4 control-label" %>
-      <div class="col-md-4 inputGroupContainer">
-      <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-hourglass"></i></span>
-          <%= f.text_field :workload, class:"form-control", placeholder:"150hrs" %>
+      <div class="input-field col s4">
+        <i class="material-icons prefix"></i>
+        <%= f.text_field :workload, id:"work", class:"validate", type:"text",placeholder:"150hrs" %>
+        <%= f.label :carga_horária, for:"work" %>
       </div>
-    </div>
+
   </div>
 
   <div class="input-group-btn">
-    <%= link_to_remove_association f, :class => "btn btn-warning"  do %>
-        <i class="fa fa-times"></i>
+    <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
+        <i class="material-icons"> delete</i>
     <% end %>
   </div>
 
