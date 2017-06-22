@@ -8,7 +8,6 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'prawn-rails'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
-# gem 'bootstrap_sb_admin_base_v2'
 # Dynamic nested forms using jQuery made easy;
 # works with formtastic, simple_form or default forms http://github.com/nathanvda/cocoon
 gem 'cocoon'
