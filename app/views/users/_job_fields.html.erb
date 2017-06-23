@@ -2,18 +2,18 @@
 
       <div class="row">
 
-          <div class="input-field col s4">
+          <div class="input-field col s3">
               <i class="material-icons prefix">work</i>
               <%= f.text_field :employer, class:"validate" %>
               <%= f.label :empresa, class:"col-md-4 control-label" %>
           </div>
-          <div class="input-field col s4">
+          <div class="input-field col s3">
             <i class="material-icons prefix">attach_money</i>
             <%= f.text_field :office, id:"office",class:"validate", type:"text" %>
             <%= f.label :cargo, for:"office" %>
           </div>
 
-        <div class="input-field col s2">
+        <div class="input-field col s3">
           <i class="material-icons prefix">date_range</i>
           <%= f.text_field :start_year_job, id:"stj", class:"datepicker",type:"date" %>
           <%= f.label :ano_de_entrada, for:"stj" %>
@@ -23,12 +23,11 @@
           <%= f.text_field :exit_year_job, id:"exj",class:"datepicker",type:"date" %>
           <%= f.label :ano_de_saída, for:"exj"%>
         </div>
-      </div>
 
-      <div class="">
-        <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
-            <i class="material-icons">delete</i>
-        <% end %>
-      </div>
-
+        <div class="input-field col s1">
+          <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
+              <i class="material-icons">delete</i>
+          <% end %>
+        </div>
+  </div>
 </div>

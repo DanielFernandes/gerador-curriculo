@@ -1,14 +1,14 @@
 <div class="nested-fields">
-
-    <div class="input-field col s6">
+  <div class="row">
+    <div class="input-field col s4">
         <i class="material-icons prefix">language</i>
         <%= f.text_field :language_idiom,id:"idiom", class:"validate", placeholder:"Inglês, Português, outra..." %>
         <%= f.label :idioma, for:"idiom"%>
-        <div class="input-group-btn">
-          <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
-          <i class="material-icons">delete</i>
-          <% end %>
-        </div>
     </div>
-
+    <div class="input-field col s1">
+      <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
+      <i class="material-icons">delete</i>
+      <% end %>
+    </div>
+  </div>
 </div>

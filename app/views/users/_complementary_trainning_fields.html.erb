@@ -12,18 +12,16 @@
           <%= f.text_field :course_comp, id:"cours_co", class:"validate", type:"text" %>
           <%= f.label :curso, for:"cours_co"%>
       </div>
-      <div class="input-field col s4">
+      <div class="input-field col s3">
         <i class="material-icons prefix"></i>
         <%= f.text_field :workload, id:"work", class:"validate", type:"text",placeholder:"150hrs" %>
         <%= f.label :carga_horária, for:"work" %>
       </div>
 
+      <div class="input-field col s1">
+        <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
+            <i class="material-icons"> delete</i>
+        <% end %>
+      </div>
   </div>
-
-  <div class="input-group-btn">
-    <%= link_to_remove_association f, :class => "btn-floating btn-medium red"  do %>
-        <i class="material-icons"> delete</i>
-    <% end %>
-  </div>
-
 </div>
